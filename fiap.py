@@ -158,8 +158,8 @@ def concat_point_set(point_set) :
 
 if __name__ == "__main__" :
   import pprint
-  wsdl_url = "http://fiap-dev.gutp.ic.i.u-tokyo.ac.jp/axis2/services/FIAPStorage?wsdl"
-  point_id = "http://..."
+  wsdl_url = "http://fiap-sandbox.gutp.ic.i.u-tokyo.ac.jp/axis2/services/FIAPStorage?wsdl"
+  point_id = "http://TKogyo.jp/StatusMonitor/01/D5"
   app = APP(wsdl_url)
 
   from_ = (datetime.now()-timedelta(days=3))
