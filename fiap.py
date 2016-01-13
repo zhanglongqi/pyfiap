@@ -14,6 +14,8 @@ from suds.transport.http import HttpTransport
 import gzip
 
 from StringIO import StringIO
+
+
 # try:
 #     from StringIO import StringIO
 # except ImportError:
@@ -167,8 +169,8 @@ def concat_point_set(point_set):
 if __name__ == "__main__":
     import pprint
 
-    wsdl_url = "http://192.168.1.2/axis2/services/FIAPStorage?wsdl"
-    point_id = "http://gutp.jp/group1/Temperature"
+    wsdl_url = "http://fiap-sandbox.gutp.ic.i.u-tokyo.ac.jp/axis2/services/FIAPStorage?wsdl"
+    point_id = "http://TKogyo.jp/StatusMonitor/01/D5"
     app = APP(wsdl_url)
 
     from_ = (datetime.now() - timedelta(days=3))
