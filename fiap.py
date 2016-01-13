@@ -13,13 +13,12 @@ from datetime import *
 from suds.transport.http import HttpTransport
 import gzip
 
-from StringIO import StringIO
+# from StringIO import StringIO
 
-
-# try:
-#     from StringIO import StringIO
-# except ImportError:
-#     from io import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 
 class GzipTransport(HttpTransport):
@@ -27,9 +26,12 @@ class GzipTransport(HttpTransport):
         request.headers['Accept-encoding'] = 'gzip'
         result = HttpTransport.send(self, request)
         if result.headers['content-encoding'] == 'gzip':
-            buf = StringIO(result.message)
-            f = gzip.GzipFile(fileobj=buf)
-            result.message = f.read()
+
+            try:
+                result.message = gzip.decompress(result.message)
+            except OSError:
+                pass
+            
         return result
 
 
